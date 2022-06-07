@@ -5,14 +5,15 @@ metadata:
     controller-tools.k8s.io: "1.0"
   name: kafka
 spec:
-  headlessServiceEnabled: true
+  headlessServiceEnabled: false
   zkAddresses:
-    - "zookeeper-client.zookeeper:2181"
+    - "zookeeper-kubernetes-experimental.service.robinhood:2181"
+  zkPath: "/banzai-cloud"
   propagateLabels: false
   oneBrokerPerNode: false
   clusterImage: "banzaicloud/kafka:2.13-2.4.0"
   readOnlyConfig: |
-    auto.create.topics.enable=false
+    auto.create.topics.enable=true
   brokerConfigGroups:
     default:
       storageConfigs:
